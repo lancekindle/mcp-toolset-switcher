@@ -26,3 +26,5 @@ So the goal here is reduce the context pollution by allowing you to maintain sep
 Thanks to https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#adding-mcp-to-your-python-project
 
 This was extremely easy to understand and implement. Biggest challenge for me was getting timing right to make Claude restart after the toolset switch.
+
+I purposefully only call this tool a toolset switcher, and don't explicitly advertise (within the tool context that Claude sees) that it can create toolsets. If this tool cannot locate a mentioned toolset, I let claude know that it can be used to create toolsets as well. This is to limit the context pollution for any initial prompt, but allow for that flexibility of creating toolsets. In testing, this seems to work pretty well.
